@@ -1,4 +1,6 @@
 
+NewGameButton.addEventListener('click', game());
+
 function getComputerChoice() {
   let randomInt = Math.floor(Math.random() * 3);
   let computerChoice = ""
@@ -78,9 +80,7 @@ function game() {
   console.log(`The winner of the game is ${roundWinner}! Congratulations to them.`);
 }
 
-game();
 
-//Test change in new branch
 
 //Test playing multiple rounds.
 /*
