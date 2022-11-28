@@ -1,5 +1,5 @@
 
-NewGameButton.addEventListener('click', game());
+
 
 function getComputerChoice() {
   let randomInt = Math.floor(Math.random() * 3);
@@ -59,6 +59,7 @@ function playRound() {
 }
 
 //Function to play the actual game consisting of multiple rounds.
+
 function game() {
   console.log("The game begins. First to 3 points is the winner.");
   let playerPoints = 0;
@@ -80,8 +81,29 @@ function game() {
   console.log(`The winner of the game is ${roundWinner}! Congratulations to them.`);
 }
 
+NewGameButton.addEventListener('click', function() {game()});
+TestOutput.addEventListener('click', function() {testOutput()});
+ClearOutput.addEventListener('click', function() {clearOutput()});
 
 
+let testOutputNumber = 1
+function testOutput() {
+  console.log("Firing test output.");
+  sendText(`Firing test output number ${testOutputNumber}.`);
+  testOutputNumber++;
+}
+
+let outputParagraph = document.getElementById("TextField");
+function sendText(outboundText) {
+  console.log(`Sending the following text to the textarea: ${outboundText}`);
+  outputParagraph.value += outboundText;
+  outputParagraph.value += `\n`;
+  outputParagraph.scrollTop = outputParagraph.scrollHeight;
+}
+
+function clearOutput() {
+  outputParagraph.value = "";
+}
 //Test playing multiple rounds.
 /*
 let i = 1;
