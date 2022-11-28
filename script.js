@@ -54,7 +54,14 @@ function checkScores() {
   }
 }
 
-NewGameButton.addEventListener('click', function() {game()});
+function newGame() {
+  playerPoints = 0;
+  computerPoints = 0;
+  clearOutput();
+  updateScores();
+}
+
+NewGameButton.addEventListener('click', function() {newGame()});
 TestOutput.addEventListener('click', function() {testOutput()});
 ClearOutput.addEventListener('click', function() {clearOutput()});
 RockButton.addEventListener('click', function() {playRound("rock")});
@@ -83,29 +90,3 @@ function sendText(outboundText) {
 function clearOutput() {
   outputParagraph.value = "";
 }
-//Test playing multiple rounds.
-/*
-let i = 1;
-while (i <= 5) {
-  playRound();
-  i++;
-}
-*/
-
-//Test getting multiple player choices.
-/*
-let i = 1;
-while (i <= 3) {
-  console.log(`Player choice ${i} is ${getPlayerChoice()}.`);
-  i++;
-}
-*/
-
-//Test getting multiple computer choices.
-/*
-let i = 1;
-while (i < 10) {
-  console.log(`Computer choice ${i} is ${getComputerChoice()}.`);
-  i++;
-}
-*/
