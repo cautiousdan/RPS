@@ -49,9 +49,11 @@ function checkScores() {
   if (playerPoints >= 3) {
     sendText("The player has won the game!!! A victory against our machine overlords! Congratulations.");
     gameOver = true;
+    winGame();
   } else if (computerPoints >= 3) {
     sendText("The computer has won the game!!! You have failed humanity.");
     gameOver = true;
+    loseGame();
   } else {
     return;
   }
@@ -63,6 +65,18 @@ function newGame() {
   clearOutput();
   updateScores();
   gameOver = false;
+  bottomImage.src = "images/playing.avif";
+  bottomImage.alt = "Two men playing rock paper scissors behind a chain link fence";
+}
+
+function winGame() {
+  bottomImage.src = "images/winner.avif";
+  bottomImage.alt = "A person standing on top of a rock with their hands held in the air";
+}
+
+function loseGame() {
+  bottomImage.src = "images/loser.avif";
+  bottomImage.alt = "A wind-up robot toy";
 }
 
 NewGameButton.addEventListener('click', function() {newGame()});
@@ -70,6 +84,8 @@ ClearOutput.addEventListener('click', function() {clearOutput()});
 RockButton.addEventListener('click', function() {playRound("rock")});
 PaperButton.addEventListener('click', function() {playRound("paper")});
 ScissorsButton.addEventListener('click', function() {playRound("scissors")});
+
+bottomImage = document.getElementById("BottomImage");
 
 let playerScoreboard = document.querySelector(".PlayerScore");
 let computerScoreboard = document.querySelector(".ComputerScore");
