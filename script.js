@@ -1,5 +1,6 @@
 let playerPoints = 0;
 let computerPoints = 0;
+let playerChoice = "";
 
 function getComputerChoice() {
   let randomInt = Math.floor(Math.random() * 3);
@@ -25,44 +26,40 @@ function playRound(playerChoice) {
     sendText("It's a tie!")
   } else if ((playerChoice === "rock" && computerChoice === "scissors") || (playerChoice === "paper" && computerChoice === "rock") || (playerChoice === "scissors" && computerChoice === "paper")) {
     winner = "player";
+    playerPoints++;
     sendText(`${playerChoice} beats ${computerChoice}. Player wins this round.`);
   } else if ((playerChoice === "scissors" && computerChoice === "rock") || (playerChoice === "rock" && computerChoice === "paper") || (playerChoice === "paper" && computerChoice === "scissors")) {
     winner = "computer";
+    computerPoints++;
     sendText(`${computerChoice} beats ${playerChoice}. Computer wins this round.`);
   } else {
     console.log("Something unexpected happened in the playRound function.");
   }
-  return winner;
+  updateScores();
+  checkScores();
 }
 
-//Function to play the actual game consisting of multiple rounds.
+function updateScores() {
+  playerScoreboard.textContent = `Player Score: ${playerPoints}`;
+  computerScoreboard.textContent = `Computer Score: ${computerPoints}`;
+}
 
-function game() {
-  sendText("The game begins. First to 3 points is the winner.");
-
-  let roundWinner = "";
-  while (playerPoints < 3 && computerPoints < 3) {
-    roundWinner = playRound();
-    if (roundWinner === "player") {
-      playerPoints++;
-    } else if (roundWinner === "computer") {
-      computerPoints++;
-    } else if (roundWinner === "tie") {
-      sendText("That round was a tie.");
-    } else {
-      console.log("Something unexpected happened in the game function.");
-    }
-    sendText(`Current score is ${playerPoints} for the human and ${computerPoints} for the computer.`);
+function checkScores() {
+  if (playerPoints >= 3) {
+    sendText("The player has won the game!!! A victory against our machine overlords! Congratulations.");
+  } else if (computerPoints >= 3) {
+    sendText("The computer has won the game!!! You have failed humanity.");
+  } else {
+    return;
   }
-  sendText(`The winner of the game is ${roundWinner}! Congratulations to them.`);
 }
 
 NewGameButton.addEventListener('click', function() {game()});
 TestOutput.addEventListener('click', function() {testOutput()});
 ClearOutput.addEventListener('click', function() {clearOutput()});
-RockButton.addEventListener('click', function() {playRound(rock)});
-PaperButton.addEventListener('click', function() {playRound(paper)});
-ScissorsButton.addEventListener('click', function() {playRound(scissors)});
+RockButton.addEventListener('click', function() {playRound("rock")});
+PaperButton.addEventListener('click', function() {playRound("paper")});
+ScissorsButton.addEventListener('click', function() {playRound("scissors")});
 
 let playerScoreboard = document.querySelector(".PlayerScore");
 let computerScoreboard = document.querySelector(".ComputerScore");

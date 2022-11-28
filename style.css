@@ -2,3 +2,34 @@ html, body {
   height: 100%;
   width: 100%;
 }
+
+button {font-size: inherit}
+
+h1 {
+display: flex;
+align-items: center;
+justify-content: space-around;
+max-width: 500px;
+}
+
+.ScoreRow {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+}
+
+.ScoreButton {
+  border: 2px solid black;
+  gap: 16px;
+  padding: 16px;
+  margin: 20px;
+}
+
+.EntryRow, .SecondRow {
+  display: flex;
+  max-width: 500px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  padding: 6px;
+}
