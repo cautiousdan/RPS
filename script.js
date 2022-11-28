@@ -1,6 +1,5 @@
 let playerPoints = 0;
 let computerPoints = 0;
-let playerChoice = "";
 let gameOver = false;
 
 function getComputerChoice() {
@@ -67,7 +66,6 @@ function newGame() {
 }
 
 NewGameButton.addEventListener('click', function() {newGame()});
-TestOutput.addEventListener('click', function() {testOutput()});
 ClearOutput.addEventListener('click', function() {clearOutput()});
 RockButton.addEventListener('click', function() {playRound("rock")});
 PaperButton.addEventListener('click', function() {playRound("paper")});
