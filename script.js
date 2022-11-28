@@ -1,6 +1,7 @@
 let playerPoints = 0;
 let computerPoints = 0;
 let playerChoice = "";
+let gameOver = false;
 
 function getComputerChoice() {
   let randomInt = Math.floor(Math.random() * 3);
@@ -18,6 +19,7 @@ function getComputerChoice() {
 }
 
 function playRound(playerChoice) {
+  if (gameOver) {return};
   let winner = ""
   let computerChoice = getComputerChoice();
   sendText(`Player choice is ${playerChoice} and computer choice is ${computerChoice}.`);
@@ -47,8 +49,10 @@ function updateScores() {
 function checkScores() {
   if (playerPoints >= 3) {
     sendText("The player has won the game!!! A victory against our machine overlords! Congratulations.");
+    gameOver = true;
   } else if (computerPoints >= 3) {
     sendText("The computer has won the game!!! You have failed humanity.");
+    gameOver = true;
   } else {
     return;
   }
@@ -59,6 +63,7 @@ function newGame() {
   computerPoints = 0;
   clearOutput();
   updateScores();
+  gameOver = false;
 }
 
 NewGameButton.addEventListener('click', function() {newGame()});
