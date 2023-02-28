@@ -1,8 +1,15 @@
-import * as util from "./js/util.js";
+import * as util from "./util.js";
 
 let playerPoints = 0;
 let computerPoints = 0;
 let gameOver = false;
+let bottomImage = document.getElementById("BottomImage");
+
+NewGameButton.addEventListener('click', function() {newGame()});
+ClearOutput.addEventListener('click', function() {clearOutput()});
+RockButton.addEventListener('click', function() {playRound("rock")});
+PaperButton.addEventListener('click', function() {playRound("paper")});
+ScissorsButton.addEventListener('click', function() {playRound("scissors")});
 
 /* function getComputerChoice() {
   let randomInt = Math.floor(Math.random() * 3);
@@ -81,13 +88,9 @@ function loseGame() {
   bottomImage.alt = "A wind-up robot toy";
 }
 
-NewGameButton.addEventListener('click', function() {newGame()});
-ClearOutput.addEventListener('click', function() {clearOutput()});
-RockButton.addEventListener('click', function() {playRound("rock")});
-PaperButton.addEventListener('click', function() {playRound("paper")});
-ScissorsButton.addEventListener('click', function() {playRound("scissors")});
 
-bottomImage = document.getElementById("BottomImage");
+
+
 
 let playerScoreboard = document.querySelector(".PlayerScore");
 let computerScoreboard = document.querySelector(".ComputerScore");
