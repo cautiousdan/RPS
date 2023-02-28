@@ -1,8 +1,10 @@
+import * as util from "./js/util.js";
+
 let playerPoints = 0;
 let computerPoints = 0;
 let gameOver = false;
 
-function getComputerChoice() {
+/* function getComputerChoice() {
   let randomInt = Math.floor(Math.random() * 3);
   let computerChoice = ""
   if (randomInt === 0) {
@@ -15,12 +17,12 @@ function getComputerChoice() {
     console.log("Something has gone wrong with getComputerChoice.")
   }
   return computerChoice;
-}
+} */
 
 function playRound(playerChoice) {
   if (gameOver) {return};
   let winner = ""
-  let computerChoice = getComputerChoice();
+  let computerChoice = util.getComputerChoice();
   sendText(`Player choice is ${playerChoice} and computer choice is ${computerChoice}.`);
   if (playerChoice === computerChoice) {
     winner = "tie";
